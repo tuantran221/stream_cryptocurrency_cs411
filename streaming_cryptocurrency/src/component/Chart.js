@@ -14,6 +14,8 @@ const Chart = () => {
   const document_title = useDocumentTitle("Price Chart");
   const { id } = useParams();
   const [coinsDetail, setCoinsDetail] = useState([]);
+  const [chartType, setChartType] = useState(true)
+  console.log(chartType)
 
   useEffect(() => {
     const fetchCoins = async () => {
@@ -31,15 +33,31 @@ const Chart = () => {
 
   moment.locale("en-gb");
 
-  const chartData = {
+  const chartPrice = {
     labels: coinsDetail.prices
       ? coinsDetail.prices.map((data) => moment(data[0]).toDate())
       : [],
     datasets: [
       {
-        label: "Price",
+        label:  "Price" ,
         data: coinsDetail.prices
           ? coinsDetail.prices.map((data) => data[1])
+          : [],
+        borderColor: "rgba(75, 192, 192, 1)",
+        fill: false,
+      },
+    ],
+  };
+
+  const chartMarketCaps = {
+    labels: coinsDetail.market_caps
+      ? coinsDetail.market_caps.map((data) => moment(data[0]).toDate())
+      : [],
+    datasets: [
+      {
+        label:  "Price" ,
+        data: coinsDetail.market_caps
+          ? coinsDetail.market_caps.map((data) => data[1])
           : [],
         borderColor: "rgba(75, 192, 192, 1)",
         fill: false,
@@ -61,13 +79,21 @@ const Chart = () => {
       },
     },
   };
+  const handleChangeChatType =(e) =>{
+    setChartType(!chartType); 
+  }
 
   return (
     <div className="chart">
       <h2>Price {id} chart</h2>
-    
+      <div className="chart-type">
+      <button className= "type-button"onClick={handleChangeChatType}>
+          Price
+        </button>
+        <button className= "type-button" onClick={handleChangeChatType}>Market Caps</button>
+      </div>
       <div className="chart-container">
-        <Line data={chartData} options={options} />
+        <Line data={chartType ? chartPrice: chartMarketCaps} options={options} />
       </div>
       <div className="back">
       <Link to="/" >

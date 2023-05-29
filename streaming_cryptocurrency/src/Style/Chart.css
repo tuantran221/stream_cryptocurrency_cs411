@@ -8,6 +8,7 @@
   .chart h2 {
     margin-bottom: 10px;
     color: black;
+    font-size: 2rem;
   }
   .back{
     margin-top: 50px;
@@ -33,7 +34,7 @@
   position:absolute;
   top:0;
   right:0;
-  height:2px;
+  height:4px;
   width:0;
   background: #1AAB8A;
   transition:400ms ease all;
@@ -45,6 +46,50 @@
   bottom:0;
 }
 .back-button:hover:before,.back-button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+.chart-type{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+
+}
+.type-button{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  width: 120px;
+  height: 35px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:800ms ease all;
+  outline:none;
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+.type-button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+  .type-button:before,.type-button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:4px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.type-button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.type-button:hover:before,.type-button:hover:after{
   width:100%;
   transition:800ms ease all;
 }
