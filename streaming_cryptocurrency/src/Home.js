@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Coin from "./component/Coins";
 import { useDocumentTitle } from "./setDocumentTitle";
-import Chart from "./component/Chart";
+
 function Home(props) {
   const document_title = useDocumentTitle("News of 100 cryptocurrency");
   const [coins, SetCoins] = useState([]);
